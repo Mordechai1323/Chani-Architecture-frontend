@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 import axios from '../../api/axios';
@@ -126,7 +126,7 @@ function LogIn({setIsRegistered}) {
               <button onClick={() => setIsRegistered(false)}>sign up</button>
             </li>
             <li>
-              <button>Forgot password?</button>
+              <Link to='/forgetPassword'>Forgot password?</Link>
             </li>
           </ul>
         </div>

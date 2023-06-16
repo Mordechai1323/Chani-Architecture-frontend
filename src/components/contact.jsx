@@ -43,7 +43,7 @@ function Contact() {
             </div>
           </div>
           <div className='right-container'>
-            <form onSubmit={handleSubmit(onSub)} action='' Role='form'>
+            <form onSubmit={handleSubmit(onSub)} action='' role='form'>
               <label className='sr-only' htmlFor='name'>
                 Name
               </label>

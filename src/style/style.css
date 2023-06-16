@@ -403,6 +403,104 @@ body {
   font-weight: bold;
   font-size: 0.7em;
 }
+.login-container .login-center .footer-container ul a {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.7em;
+  color: #3e3e3e;
+}
+
+.forget-password-container {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3e3e3e;
+}
+.forget-password-container .forget-password-center {
+  width: 70%;
+  max-width: 300px;
+  min-height: 400px;
+  background-color: #eaeaeb;
+  border-radius: 38px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+.forget-password-container .forget-password-center .header-container {
+  height: 25%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forget-password-container .forget-password-center .header-container h2 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.forget-password-container .forget-password-center .email-container {
+  width: 70%;
+}
+.forget-password-container .forget-password-center .email-container .top-container label {
+  font-size: 1em;
+  margin: 0;
+  font-weight: bold;
+}
+.forget-password-container .forget-password-center .email-container .down-container {
+  display: flex;
+  align-items: center;
+}
+.forget-password-container .forget-password-center .email-container .down-container input {
+  width: 100%;
+  border: none;
+  outline: none;
+  margin-left: 8px;
+  background: #eaeaeb;
+  border-radius: 12px;
+  font-weight: bold;
+}
+.forget-password-container .forget-password-center .email-container .down-container input::-webkit-outer-spin-button,
+.forget-password-container .forget-password-center .email-container .down-container input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.forget-password-container .forget-password-center .password-container {
+  width: 60%;
+}
+.forget-password-container .forget-password-center .password-container .top-container label {
+  font-size: 1.25em;
+  margin: 0;
+  font-weight: bold;
+}
+.forget-password-container .forget-password-center .password-container .down-container {
+  display: flex;
+  align-items: center;
+}
+.forget-password-container .forget-password-center .password-container .down-container input {
+  width: 100%;
+  border: none;
+  outline: none;
+  margin-left: 8px;
+  background: #eaeaeb;
+  border-radius: 12px;
+  font-weight: bold;
+}
+.forget-password-container .forget-password-center .forget-password-button {
+  margin-top: 16px;
+  width: 60%;
+}
+.forget-password-container .forget-password-center .forget-password-button button {
+  width: 100%;
+  height: 36px;
+  background-color: #3e3e3e;
+  color: white;
+  border-radius: 32px;
+  border: none;
+}
 
 .order-container {
   min-height: 550px;
@@ -918,6 +1016,18 @@ body {
     align-items: center;
     justify-content: center;
   }
+  .account-container .account-center .top-container h1 {
+    text-align: center;
+    width: 90%;
+    padding-left: 102px;
+  }
+  .account-container .account-center .top-container i {
+    width: 10%;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #3e3e3e;
+    cursor: pointer;
+  }
   .account-container .account-center .main-container {
     height: 80%;
     display: flex;
@@ -926,7 +1036,7 @@ body {
     align-items: center;
   }
   .account-container .account-center .main-container .left-container {
-    width: 50%;
+    width: 65%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -938,7 +1048,7 @@ body {
   }
   .account-container .account-center .main-container .right-container {
     height: 100%;
-    width: 50%;
+    width: 35%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -953,18 +1063,43 @@ body {
     text-align: center;
   }
   .account-container .account-center .main-container .right-container .files-container .files-container {
-    height: 75%;
+    height: 90%;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    justify-content: space-between;
     align-items: center;
   }
   .account-container .account-center .main-container .right-container .files-container .files-container a {
     text-decoration: none;
-    width: 45%;
-    height: 20%;
+    min-width: 80%;
+    min-height: 25%;
+    border-radius: 4vw;
+    background-color: #3e3e3e;
+    color: #eaeaeb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .account-container .account-center .main-container .right-container .files-container-info {
+    width: 60%;
+    height: 100%;
+  }
+  .account-container .account-center .main-container .right-container .files-container-info .top-files-container {
+    height: 25%;
+    text-align: center;
+  }
+  .account-container .account-center .main-container .right-container .files-container-info .files-container {
+    height: 90%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .account-container .account-center .main-container .right-container .files-container-info .files-container a {
+    text-decoration: none;
+    min-width: 80%;
+    height: 15%;
     border-radius: 4vw;
     background-color: #3e3e3e;
     color: #eaeaeb;
@@ -993,8 +1128,8 @@ body {
     position: relative;
     overflow: hidden;
     display: inline-block;
-    width: 55%;
-    height: 20%;
+    width: 80%;
+    height: 25%;
     border-radius: 4vw;
     background-color: #3e3e3e;
     color: #eaeaeb;
@@ -1030,38 +1165,56 @@ body {
     height: 10%;
     width: 100%;
     text-align: center;
-    margin-top: 12px;
+    margin: 12px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .projectsManagement-container .center-container .top-container h1 {
+    width: 90%;
+    padding-left: 102px;
+  }
+  .projectsManagement-container .center-container .top-container i {
+    width: 10%;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #3e3e3e;
+    cursor: pointer;
   }
   .projectsManagement-container .center-container .main-container {
     height: 90%;
-    min-height: 400px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
   .projectsManagement-container .center-container .main-container .table-projects {
     width: 90%;
-    min-height: 400px;
   }
   .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr {
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th {
-    width: 20%;
+    width: 18%;
   }
   .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(1) {
     width: 3%;
   }
+  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(6) {
+    width: 5%;
+  }
   .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(7) {
+    width: 5%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(8) {
     width: 5%;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project {
     height: 32px;
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     background: #3e3e3e;
     border-radius: 2vw;
@@ -1069,16 +1222,31 @@ body {
     margin: 2px 0px;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td {
-    width: 20%;
+    width: 18%;
     padding: 0px 8px;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(1) {
     width: 3%;
     cursor: pointer;
   }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) {
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(6) {
     width: 5%;
     color: red;
+    cursor: pointer;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) {
+    width: 5%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) a {
+    text-decoration: none;
+    color: #eaeaeb;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) {
+    width: 5%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) a {
+    text-decoration: none;
+    color: #eaeaeb;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks {
     width: 60%;
@@ -1100,7 +1268,7 @@ body {
     width: 30%;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th:nth-child(3) {
-    width: 5%;
+    width: 8%;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody {
     width: 100%;
@@ -1124,7 +1292,7 @@ body {
     width: 30%;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td:nth-child(3) {
-    width: 5%;
+    width: 8%;
     color: red;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task {
@@ -1153,56 +1321,6 @@ body {
     outline: none;
     font-weight: bold;
   }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project {
-    height: 32px;
-    width: 65%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #3e3e3e;
-    border-radius: 2vw;
-    color: #eaeaeb;
-    margin: 2px 0px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td {
-    width: 19%;
-    padding: 0px 8px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td:nth-child(1) {
-    width: 3%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td input {
-    width: 100%;
-    border: none;
-    background: #3e3e3e;
-    color: #17da4b;
-    outline: none;
-    font-weight: bold;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td input[type=number]::-webkit-inner-spin-button, .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td input[type=number][type=number] {
-    -moz-appearance: textfield; /* Firefox */
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td input[type=date] {
-    -moz-appearance: none;
-         appearance: none;
-    -webkit-appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 8px;
-    font-size: 16px;
-    color: #17da4b;
-    outline: none;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .add-project td input[type=date]::-webkit-calendar-picker-indicator {
-    filter: invert(1);
-    color: #17da4b;
-    opacity: 0.5;
-    cursor: pointer;
-  }
   .projectsManagement-container .center-container .main-container .table-projects tbody .status-select {
     -moz-appearance: none;
          appearance: none;
@@ -1225,6 +1343,123 @@ body {
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .status-select option:hover {
     background: none;
+  }
+  .add-project-container {
+    min-height: 500px;
+    background-color: #3e3e3e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .add-project-container .add-project-center {
+    min-height: 410px;
+    width: 65%;
+    background-color: #eaeaeb;
+    border-radius: 4vw;
+    font-family: "Noto Sans Mono", monospace;
+  }
+  .add-project-container .add-project-center .top-container {
+    width: 100%;
+    text-align: center;
+    margin: 12px 0;
+  }
+  .add-project-container .add-project-center .main-container {
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .add-project-container .add-project-center .main-container form {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .add-project-container .add-project-center .main-container form .input-container {
+    width: 35%;
+    position: relative;
+    margin: 24px 0;
+    font-family: "Noto Sans Mono", monospace;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font: inherit;
+    color: #3e3e3e;
+    font-weight: bold;
+    background-color: transparent;
+    outline: 2px solid #fff;
+  }
+  .add-project-container .add-project-center .main-container form .input-container label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(10px, 10px);
+    transition: transform 0.25s;
+    font-weight: bold;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input:focus + label,
+  .add-project-container .add-project-center .main-container form .input-container input:valid + label {
+    transform: translate(10px, -14px) scale(0.8);
+    color: #3e3e3e;
+    padding-inline: 5px;
+    background: #eaeaeb;
+    font-weight: bold;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input[type=number]::-webkit-inner-spin-button, .add-project-container .add-project-center .main-container form .input-container input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input[type=number][type=number] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+  .add-project-container .add-project-center .main-container form .input-container input[type=date] {
+    -moz-appearance: none;
+         appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    color: #3e3e3e;
+    font-weight: bold;
+    outline: none;
+    outline: 2px solid #fff;
+    padding: 10px;
+    border-radius: 4px;
+    text-align: center;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input[type=date]::-webkit-calendar-picker-indicator {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input[type=file]::file-selector-button {
+    border-radius: 4px;
+    padding: 0 16px;
+    cursor: pointer;
+    border: 1px solid #3e3e3e;
+    margin-right: 16px;
+    transition: background-color 200ms;
+  }
+  .add-project-container .add-project-center .main-container form .input-container input[type=file]::file-selector-button:hover {
+    background-color: #f3f4f6;
+  }
+  .add-project-container .add-project-center .main-container form .button-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0px;
+  }
+  .add-project-container .add-project-center .main-container form .button-container button {
+    outline: 2px solid #fff;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    width: 15%;
+    height: 36px;
   }
 }
 @media (min-width: 1300px) {
@@ -1272,6 +1507,13 @@ body {
   .login-container .login-center .header-container {
     height: 88px;
   }
+  .forget-password-container {
+    min-height: 850px;
+  }
+  .forget-password-container .forget-password-center {
+    max-width: 380px;
+    min-height: 500px;
+  }
   .order-container .order-center-container a {
     width: 40%;
   }
@@ -1307,8 +1549,32 @@ body {
   .projectsManagement-container {
     min-height: 850px;
   }
-  .projectsManagement-container .center-container .main-container .table-projects {
-    min-height: 600px;
+  .projectsManagement-container .center-container {
+    min-height: 700px;
+  }
+  .projectsManagement-container .center-container .top-container h1 {
+    padding-left: 152px;
+  }
+  .projectsManagement-container .center-container .top-container i {
+    font-size: 1.75em;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(6) {
+    width: 2%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(7) {
+    width: 2%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(8) {
+    width: 2%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(6) {
+    width: 2%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) {
+    width: 2%;
+  }
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) {
+    width: 2%;
   }
   .client-projects {
     background-color: #3e3e3e;
@@ -1367,5 +1633,15 @@ body {
   }
   .client-projects .client-projects-center .main-container table tbody a tr td:nth-child(1) {
     margin-left: 34px;
+  }
+  .add-project-container {
+    min-height: 850px;
+  }
+  .add-project-container .add-project-center {
+    min-height: 550px;
+    width: 60%;
+  }
+  .add-project-container .add-project-center .main-container form .button-container {
+    margin-top: 64px;
   }
 }/*# sourceMappingURL=style.css.map */

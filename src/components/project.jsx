@@ -14,7 +14,6 @@ function Project() {
       const response = await axios.get(`/ourProjects/${projectID}`);
       setIsLoading(false);
       setProject(response.data);
-      console.log(response.data);
     } catch (err) {
       setIsLoading(false);
       console.log('server error', err.response.data);
@@ -23,20 +22,21 @@ function Project() {
 
   useEffect(() => {
     getProject();
-    const myInterval = setInterval(() => plus(), 50000);
-    return function cleanup() {
-      clearInterval(myInterval);
-    };
+    // const myInterval = setInterval(() => plus(),1000);
+    // return function cleanup() {
+    //   clearInterval(myInterval);
+    // };
   }, []);
 
+  console.log('count: ', count, 'length: ', project?.images?.length);
   const plus = () => {
-    setCount((prev) => (prev + 1) % project.images.length);
+    setCount((prev) => (prev + 1) % project?.images?.length);
   };
 
   const minus = () => {
     if (count > 0) {
       setCount((prev) => prev - 1);
-    } else setCount(project.images.length - 1);
+    } else setCount(project?.images?.length - 1);
   };
 
   return isLoading ? (
@@ -45,7 +45,7 @@ function Project() {
     <div className='project-container'>
       <div className='top-project-container'>
         <div className='left-container'>
-          <button onClick={minus}>
+          <button onClick={  minus}>
             <i className='fa-solid fa-arrow-left'></i>
           </button>
         </div>

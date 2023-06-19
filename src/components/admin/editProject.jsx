@@ -32,7 +32,6 @@ export default function EditProject() {
       setProject(response.data);
       setDate(response.data.completion_date?.substring(0, 10));
       setIsLoading(false);
-      console.log(response.data);
     } catch (err) {
       setIsLoading(false);
       console.log('server error', err.response);
@@ -47,7 +46,6 @@ export default function EditProject() {
   const sendFileToServer = async (urlFile) => {
     const formData = new FormData();
     formData.append('file', selectedFile);
-    console.log('sent image');
     try {
       const response = await axiosPrivate.post(`/projects/${urlFile}`, formData, {
         signal: controller.signal,
@@ -62,24 +60,21 @@ export default function EditProject() {
 
   const onSubmit = async (bodyData) => {
     let updatedData = {};
-
     for (const key in bodyData) {
-      if (key === 'completion_date' && bodyData[key] !== project.completion_date.substring(0, 10)) {
-        updatedData[key] = bodyData[key];
+      if (key === 'completion_date' && date !== project?.completion_date?.substring(0, 10)) {
+        updatedData[key] = date;
       } else if (bodyData[key] !== '' && key !== 'completion_date') {
         updatedData[key] = bodyData[key];
       } else {
         updatedData[key] = project[key];
       }
     }
-
     try {
-      const response = await axiosPrivate.put(`/projects/${projectID}`, updatedData, {
+      const response = await axiosPrivate.put(`/projects/?projectID=${projectID}`, updatedData, {
         signal: controller.signal,
       });
-      console.log(response.data);
       const urlFile = project.file ? `editFile/${project._id}` : `uploadFile/${project._id}`;
-      sendFileToServer(urlFile);
+      selectedFile && sendFileToServer(urlFile);
       if (response.data.modifiedCount === 1) {
         nav('/projectsManagement');
       } else {
@@ -147,7 +142,7 @@ export default function EditProject() {
                 placeholder={project.client_email}
               />
               <label htmlFor='client_email' required className='input-label'>
-                Project email
+                Client email
               </label>
               {errors.client_email && (
                 <div tabIndex='0' className='text-danger font-weight-bold d-block'>
@@ -156,7 +151,7 @@ export default function EditProject() {
               )}
             </div>
             <div className='input-container'>
-              <input {...register('completion_date')} id='completion_date' type='date' value={date} onChange={(e) => setDate(e.target.value)} />
+              <input {...register('completion_date')} id='completion_date' type='date' value={date || ''} onChange={(e) => setDate(e.target.value)} />
               <label htmlFor='completion_date' className='input-label'>
                 completion date
               </label>
@@ -166,7 +161,6 @@ export default function EditProject() {
                 type='file'
                 id='project_file'
                 onChange={(e) => {
-                  console.log(e.target.files[0]);
                   setSelectedFile(e.target.files[0]);
                 }}
               />

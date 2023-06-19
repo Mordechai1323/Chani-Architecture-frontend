@@ -21,7 +21,6 @@ export default function ClientProjects() {
       });
       setMyProjects(response.data);
       setIsLoading(false);
-      console.log(response.data);
     } catch (err) {
       setIsLoading(false);
       console.log('server error', err.response);

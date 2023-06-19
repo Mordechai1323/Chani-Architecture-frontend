@@ -4,6 +4,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BASE_URL } from '../../api/axios';
 
 export default function ClientProject({ project }) {
   const axiosPrivate = useAxiosPrivate();
@@ -23,7 +24,6 @@ export default function ClientProject({ project }) {
       setMyProject(response.data);
       setIsLoading(false);
       getProjectStatus(response.data.status.name);
-      console.log(response.data);
     } catch (err) {
       setIsLoading(false);
       console.log('server error', err.response);
@@ -79,7 +79,7 @@ export default function ClientProject({ project }) {
               <h4>project status: {projectStatus}</h4>
             </div>
             <div className='info-container'>
-              <h4>notes: {myProject.nots ? myProject.nots : ''}</h4>
+              <h4>notes: {myProject.notes ? myProject.notes : ''}</h4>
             </div>
           </div>
           <div className='right-container'>
@@ -87,20 +87,17 @@ export default function ClientProject({ project }) {
               <div className='top-files-container'>
                 <h2>files</h2>
               </div>
-              <div className='files-container'>
-                <a href='/images/myw3schoolsimage.jpg' download>
-                  file.name
-                </a>
-                <a href='/images/myw3schoolsimage.jpg' download>
-                  file.name
-                </a>
-                <a href='/images/myw3schoolsimage.jpg' download>
-                  file.name
-                </a>
-                <a href='/images/myw3schoolsimage.jpg' download>
-                  file.name
-                </a>
-              </div>
+              {myProject.file ? (
+                <div className='files-container'>
+                  <a href={BASE_URL + '/' + myProject.file} target='_blank'>
+                    {myProject.file.substring(20)}
+                  </a>
+                </div>
+              ) : (
+                <div className='files-container'>
+                  <h6>-</h6>
+                </div>
+              )}
             </div>
 
             <div className='upload-files-container'>

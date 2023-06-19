@@ -52,7 +52,6 @@ export default function ProjectsManagement() {
     };
     optionsArr.forEach((option) => (option.name === e.target.value ? (status.style = option.style) : ''));
     setProjects(projects.map((project) => (project._id === projectID ? { ...project, status } : project)));
-    console.log(status);
     try {
       const response = await axiosPrivate.put(`/projects/status/${projectID}`, status, {
         signal: controller.signal,
@@ -72,14 +71,6 @@ export default function ProjectsManagement() {
 
   const changeIsOpen = async (projectID) => {
     setProjects(projects.map((project) => (project._id === projectID ? { ...project, isOpen: !project.isOpen } : project)));
-    // try {
-    //   const response = await axiosPrivate.put(`/projects/changeIsOpen/${projectID}`, {
-    //     signal: controller.signal,
-    //   });
-    // } catch (err) {
-    //   console.log('server error', err.response);
-    //   !err.response ? notify('error', 'No Server Response') : err.response?.status === 401 ? notify('error', 'Project not found') : notify('error', 'Open project failed');
-    // }
   };
 
   const deleteProject = async (projectID) => {
@@ -108,7 +99,6 @@ export default function ProjectsManagement() {
       );
       getProjects();
       setTaskValue('');
-      console.log(response.data);
     } catch (err) {
       console.log('server error', err.response);
       !err.response
@@ -135,12 +125,10 @@ export default function ProjectsManagement() {
         return project;
       })
     );
-    console.log(projects);
     try {
       const response = await axiosPrivate.put(`/projects/task/?projectID=${projectID}&taskID=${taskID}`, status, {
         signal: controller.signal,
       });
-      // getProjects();
     } catch (err) {
       console.log('server error', err.response);
       !err.response
@@ -214,7 +202,6 @@ export default function ProjectsManagement() {
                     <td onClick={() => changeIsOpen(project._id)}>{!project.isOpen ? <i className='fa-solid fa-arrow-right'></i> : <i className='fa-solid fa-arrow-down'></i>}</td>
                     <td>{project.project_number}</td>
                     <td>{project.project_name}</td>
-                    {/* <td>{project.client_email}</td> */}
                     <td>{project.completion_date?.substring(0, 10)}</td>
                     <td>
                       <select className='status-select' style={{ background: project?.status?.style }} onChange={(e) => changeStatus(e, project._id)}>
@@ -287,7 +274,7 @@ export default function ProjectsManagement() {
                                   name='task'
                                   onChange={(e) => setTaskValue(e?.target?.value)}
                                   onBlur={() => addTask(project?._id)}
-                                  onKeyDown={e => e.key === "Enter" && addTask(project?._id)}
+                                  onKeyDown={(e) => e.key === 'Enter' && addTask(project?._id)}
                                   value={taskValue}
                                 />
                               </td>

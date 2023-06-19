@@ -23,7 +23,6 @@ export default function ProjectInfo() {
       });
       setProject(response.data);
       setIsLoading(false);
-      console.log(response.data);
     } catch (err) {
       setIsLoading(false);
       console.log('server error', err.response);

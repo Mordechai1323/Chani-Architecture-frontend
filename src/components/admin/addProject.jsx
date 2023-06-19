@@ -26,7 +26,6 @@ export default function AddProject() {
       const response = await axiosPrivate.post(`/projects/uploadFile/${projectID}`, formData, {
         signal: controller.signal,
       });
-      console.log(response.data);
     } catch (error) {
       console.error(error.response);
     }
@@ -37,9 +36,8 @@ export default function AddProject() {
       const response = await axiosPrivate.post(`/projects/`, bodyData, {
         signal: controller.signal,
       });
-      console.log(response);
       if (response.status === 201) {
-        sendFileToServer(response.data._id);
+        selectedFile && sendFileToServer(response.data._id);
         nav('/projectsManagement');
       }
     } catch (err) {
@@ -97,7 +95,7 @@ export default function AddProject() {
             <div className='input-container'>
               <input {...register('client_email', { required: false, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} id='client_email' type='email' />
               <label htmlFor='client_email' required className='input-label'>
-                Project email
+                Client email
               </label>
               {errors.client_email && (
                 <div tabIndex='0' className='text-danger font-weight-bold d-block'>
@@ -116,7 +114,6 @@ export default function AddProject() {
                 type='file'
                 id='project_file'
                 onChange={(e) => {
-                  console.log(e.target.files[0]);
                   setSelectedFile(e.target.files[0]);
                 }}
               />

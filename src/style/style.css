@@ -15,7 +15,6 @@ body {
 
 #skip a {
   position: absolute;
-  left: -10000px;
   top: auto;
   width: 1px;
   height: 1px;
@@ -34,6 +33,7 @@ body {
   background-color: #3e3e3e;
 }
 .header-page .header-top {
+  width: 100%;
   height: 8vw;
   display: flex;
   align-items: center;
@@ -80,6 +80,7 @@ body {
   font-weight: 600;
   border-bottom: 1px solid white;
   padding: 12px;
+  text-align: center;
 }
 .header-page .header-top nav ul li a {
   font-size: 1.5em;
@@ -760,43 +761,488 @@ body {
   font-size: 5vw;
 }
 
+.account-container {
+  background-color: #3e3e3e;
+  min-height: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.account-container .account-center {
+  background-color: #eaeaeb;
+  width: 80vw;
+  height: 75vh;
+  border-radius: 4vw;
+  font-family: "Noto Sans Mono", monospace;
+}
+.account-container .account-center .top-container {
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.account-container .account-center .top-container h1 {
+  text-align: center;
+  width: 90%;
+  padding-left: 102px;
+}
+.account-container .account-center .top-container i {
+  width: 10%;
+  font-size: 1.5em;
+  text-decoration: none;
+  color: #3e3e3e;
+  cursor: pointer;
+}
+.account-container .account-center .main-container {
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.account-container .account-center .main-container .left-container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.account-container .account-center .main-container .left-container .info-container {
+  width: 80%;
+  height: 68px;
+  align-items: center;
+}
+.account-container .account-center .main-container .left-container .info-container h4 {
+  font-size: 1em;
+}
+.account-container .account-center .main-container .right-container {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.account-container .account-center .main-container .right-container .files-container {
+  width: 60%;
+  height: 50%;
+}
+.account-container .account-center .main-container .right-container .files-container .top-files-container {
+  height: 25%;
+  text-align: center;
+}
+.account-container .account-center .main-container .right-container .files-container .files-container {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.account-container .account-center .main-container .right-container .files-container .files-container a {
+  text-decoration: none;
+  min-width: 80%;
+  min-height: 25%;
+  border-radius: 4vw;
+  background-color: #3e3e3e;
+  color: #eaeaeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-container .account-center .main-container .right-container .files-container-info {
+  width: 60%;
+  height: 100%;
+}
+.account-container .account-center .main-container .right-container .files-container-info .top-files-container {
+  height: 25%;
+  text-align: center;
+}
+.account-container .account-center .main-container .right-container .files-container-info .files-container {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.account-container .account-center .main-container .right-container .files-container-info .files-container a {
+  text-decoration: none;
+  min-width: 80%;
+  height: 15%;
+  border-radius: 4vw;
+  background-color: #3e3e3e;
+  color: #eaeaeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-container .account-center .main-container .right-container .upload-files-container {
+  width: 60%;
+  height: 50%;
+}
+.account-container .account-center .main-container .right-container .upload-files-container .top-upload-files-container {
+  height: 15%;
+  text-align: center;
+}
+.account-container .account-center .main-container .right-container .upload-files-container .upload-files-container {
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.account-container .account-center .main-container .right-container .upload-files-container .upload-files-container .upload-file-container {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 80%;
+  height: 25%;
+  border-radius: 4vw;
+  background-color: #3e3e3e;
+  color: #eaeaeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.account-container .account-center .main-container .right-container .upload-files-container .upload-files-container .upload-file-container input {
+  position: absolute;
+  font-size: 100px;
+  opacity: 0;
+  right: 0;
+  top: 0;
+}
+.account-container .account-center .main-container .right-container .upload-files-container .upload-files-container .upload-file-container input:hover {
+  cursor: pointer;
+}
+
+.projectsManagement-container {
+  background-color: #3e3e3e;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.projectsManagement-container .center-container {
+  width: 100%;
+  min-height: 450px;
+  background-color: #eaeaeb;
+  border-radius: 4vw;
+  font-family: "Noto Sans Mono", monospace;
+}
+.projectsManagement-container .center-container .top-container {
+  height: 10%;
+  width: 100%;
+  text-align: center;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.projectsManagement-container .center-container .top-container h1 {
+  width: 90%;
+  padding-left: 32px;
+  font-size: 1em;
+  font-weight: bold;
+}
+.projectsManagement-container .center-container .top-container i {
+  width: 10%;
+  font-size: 1em;
+  text-decoration: none;
+  color: #3e3e3e;
+}
+.projectsManagement-container .center-container .main-container {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.projectsManagement-container .center-container .main-container .table-projects {
+  width: 100%;
+}
+.projectsManagement-container .center-container .main-container .table-projects .thead-projects tr {
+  margin: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 0.5em;
+}
+.projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th {
+  width: 15%;
+}
+.projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(1) {
+  width: 3%;
+}
+.projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(6) {
+  width: 5%;
+}
+.projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(7) {
+  width: 5%;
+}
+.projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(8) {
+  width: 5%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project {
+  height: 32px;
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #3e3e3e;
+  border-radius: 2vw;
+  color: #eaeaeb;
+  margin: 2px 0px;
+  font-size: 0.5em;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td {
+  width: 18%;
+  padding: 0px 8px;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(1) {
+  width: 3%;
+  cursor: pointer;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(6) {
+  width: 5%;
+  color: red;
+  cursor: pointer;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) {
+  width: 5%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) a {
+  text-decoration: none;
+  color: #eaeaeb;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) {
+  width: 5%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) a {
+  text-decoration: none;
+  color: #eaeaeb;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks {
+  width: 80%;
+  min-height: 25px;
+  margin: 8px 0px 22px 48px;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks {
+  width: 100%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75em;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th {
+  width: 80%;
+  padding: 0px 8px;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th:nth-child(2) {
+  width: 30%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th:nth-child(3) {
+  width: 8%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody {
+  width: 100%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task {
+  min-height: 32px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #3e3e3e;
+  border-radius: 4vw;
+  color: #eaeaeb;
+  margin: 2px 0px;
+  font-size: 0.75em;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td {
+  width: 80%;
+  padding: 0px 8px;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td:nth-child(2) {
+  width: 30%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td:nth-child(3) {
+  width: 8%;
+  color: red;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task {
+  height: 32px;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #3e3e3e;
+  border-radius: 2vw;
+  color: #eaeaeb;
+  margin: 2px 0px;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task td {
+  width: 100%;
+  padding: 0px 8px;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task td:nth-child(1) {
+  width: 3%;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task td input {
+  width: 100%;
+  border: none;
+  background: #3e3e3e;
+  color: #17da4b;
+  outline: none;
+  font-weight: bold;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .status-select {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  width: 70%;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .status-select option {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  border-radius: 12px;
+  border: none;
+  background: none;
+}
+.projectsManagement-container .center-container .main-container .table-projects tbody .status-select option:hover {
+  background: none;
+}
+
+.add-project-container {
+  min-height: 500px;
+  background-color: #3e3e3e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.add-project-container .add-project-center {
+  min-height: 410px;
+  width: 90%;
+  background-color: #eaeaeb;
+  border-radius: 4vw;
+  font-family: "Noto Sans Mono", monospace;
+}
+.add-project-container .add-project-center .top-container {
+  width: 100%;
+  text-align: center;
+  margin: 12px 0;
+}
+.add-project-container .add-project-center .main-container {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.add-project-container .add-project-center .main-container form {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-project-container .add-project-center .main-container form .input-container {
+  width: 45%;
+  position: relative;
+  margin: 24px 0;
+  font-family: "Noto Sans Mono", monospace;
+}
+.add-project-container .add-project-center .main-container form .input-container input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font: inherit;
+  color: #3e3e3e;
+  font-weight: bold;
+  background-color: transparent;
+  outline: 2px solid #fff;
+}
+.add-project-container .add-project-center .main-container form .input-container label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(10px, 10px);
+  transition: transform 0.25s;
+  font-weight: bold;
+}
+.add-project-container .add-project-center .main-container form .input-container input:focus + label,
+.add-project-container .add-project-center .main-container form .input-container input:valid + label {
+  transform: translate(10px, -14px) scale(0.8);
+  color: #3e3e3e;
+  padding-inline: 5px;
+  background: #eaeaeb;
+  font-weight: bold;
+}
+.add-project-container .add-project-center .main-container form .input-container input[type=number]::-webkit-inner-spin-button, .add-project-container .add-project-center .main-container form .input-container input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.add-project-container .add-project-center .main-container form .input-container input[type=number][type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
+.add-project-container .add-project-center .main-container form .input-container input[type=date] {
+  -moz-appearance: none;
+       appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  font-size: 16px;
+  color: #3e3e3e;
+  font-weight: bold;
+  outline: none;
+  outline: 2px solid #fff;
+  padding: 10px;
+  border-radius: 4px;
+  text-align: center;
+}
+.add-project-container .add-project-center .main-container form .input-container input[type=date]::-webkit-calendar-picker-indicator {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.add-project-container .add-project-center .main-container form .input-container input[type=file]::file-selector-button {
+  border-radius: 4px;
+  padding: 0 16px;
+  cursor: pointer;
+  border: 1px solid #3e3e3e;
+  margin-right: 16px;
+  transition: background-color 200ms;
+}
+.add-project-container .add-project-center .main-container form .input-container input[type=file]::file-selector-button:hover {
+  background-color: #f3f4f6;
+}
+.add-project-container .add-project-center .main-container form .button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+.add-project-container .add-project-center .main-container form .button-container button {
+  outline: 2px solid #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  border: none;
+  width: 15%;
+  height: 36px;
+}
+
 @media (min-width: 550px) {
-  .header {
-    max-height: 700px;
-    background-size: 100% 100%;
-  }
-  .middle-container {
-    min-height: 550px;
-  }
-  .middle-container .about-container {
-    display: flex;
-    align-items: center;
-  }
-  .middle-container .about-container .img-container {
-    width: 50%;
-  }
-  .middle-container .about-container .img-container img {
-    width: 100%;
-    height: 100%;
-  }
-  .middle-container .about-container .text-container {
-    width: 50%;
-    font-size: 1.35em;
-    margin-left: 62px;
-  }
-  .middle-container .about-container .text-container p {
-    margin: 0;
-  }
-  .footer .left-container ul li {
-    font-size: 1.25em;
-    margin-top: 0;
-    padding: 4px;
-  }
-  .footer .right-container ul li {
-    padding: 8px 0;
-    font-size: 1.25em;
-  }
   .header-page {
+    width: 100%;
     max-height: 80px;
   }
   .header-page .header-top {
@@ -845,6 +1291,49 @@ body {
   }
   .header-page .header-top .burger {
     display: none;
+  }
+  .header {
+    width: 100%;
+    max-height: 700px;
+    background-size: 100% 100%;
+  }
+  .middle-container {
+    width: 100%;
+    min-height: 550px;
+  }
+  .middle-container .about-container {
+    display: flex;
+    align-items: center;
+  }
+  .middle-container .about-container .img-container {
+    width: 50%;
+  }
+  .middle-container .about-container .img-container img {
+    width: 100%;
+    height: 100%;
+  }
+  .middle-container .about-container .text-container {
+    width: 50%;
+    font-size: 1.35em;
+    margin-left: 62px;
+  }
+  .middle-container .about-container .text-container p {
+    margin: 0;
+  }
+  .footer {
+    width: 100%;
+  }
+  .footer .left-container ul {
+    margin-left: 16px;
+  }
+  .footer .left-container ul li {
+    font-size: 1.25em;
+    margin-top: 0;
+    padding: 4px;
+  }
+  .footer .right-container ul li {
+    padding: 8px 0;
+    font-size: 1.25em;
   }
   .projects-container .projects a {
     width: 33%;
@@ -996,63 +1485,28 @@ body {
     cursor: pointer;
   }
   .account-container {
-    background-color: #3e3e3e;
     min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .account-container .account-center {
-    background-color: #eaeaeb;
     width: 60vw;
     height: 75vh;
-    border-radius: 4vw;
-    font-family: "Noto Sans Mono", monospace;
-  }
-  .account-container .account-center .top-container {
-    width: 100%;
-    height: 15%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .account-container .account-center .top-container h1 {
-    text-align: center;
-    width: 90%;
-    padding-left: 102px;
-  }
-  .account-container .account-center .top-container i {
-    width: 10%;
-    font-size: 1.5em;
-    text-decoration: none;
-    color: #3e3e3e;
-    cursor: pointer;
   }
   .account-container .account-center .main-container {
     height: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .left-container {
     width: 65%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .left-container .info-container {
     width: 80%;
     height: 68px;
   }
+  .account-container .account-center .main-container .left-container .info-container h4 {
+    font-size: 1.25em;
+  }
   .account-container .account-center .main-container .right-container {
     height: 100%;
     width: 35%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
   }
   .account-container .account-center .main-container .right-container .files-container {
     width: 60%;
@@ -1065,21 +1519,10 @@ body {
   .account-container .account-center .main-container .right-container .files-container .files-container {
     height: 90%;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .right-container .files-container .files-container a {
-    text-decoration: none;
     min-width: 80%;
     min-height: 25%;
-    border-radius: 4vw;
-    background-color: #3e3e3e;
-    color: #eaeaeb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .right-container .files-container-info {
     width: 60%;
@@ -1087,25 +1530,14 @@ body {
   }
   .account-container .account-center .main-container .right-container .files-container-info .top-files-container {
     height: 25%;
-    text-align: center;
   }
   .account-container .account-center .main-container .right-container .files-container-info .files-container {
     height: 90%;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
   }
   .account-container .account-center .main-container .right-container .files-container-info .files-container a {
-    text-decoration: none;
     min-width: 80%;
     height: 15%;
-    border-radius: 4vw;
-    background-color: #3e3e3e;
-    color: #eaeaeb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .right-container .upload-files-container {
     width: 60%;
@@ -1113,36 +1545,19 @@ body {
   }
   .account-container .account-center .main-container .right-container .upload-files-container .top-upload-files-container {
     height: 15%;
-    text-align: center;
   }
   .account-container .account-center .main-container .right-container .upload-files-container .upload-files-container {
     height: 90%;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .right-container .upload-files-container .upload-files-container .upload-file-container {
     cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
     width: 80%;
     height: 25%;
-    border-radius: 4vw;
-    background-color: #3e3e3e;
-    color: #eaeaeb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .account-container .account-center .main-container .right-container .upload-files-container .upload-files-container .upload-file-container input {
     position: absolute;
     font-size: 100px;
-    opacity: 0;
-    right: 0;
-    top: 0;
   }
   .account-container .account-center .main-container .right-container .upload-files-container .upload-files-container .upload-file-container input:hover {
     cursor: pointer;
@@ -1150,316 +1565,62 @@ body {
   .projectsManagement-container {
     background-color: #3e3e3e;
     min-height: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .projectsManagement-container .center-container {
     width: 80%;
     min-height: 450px;
-    background-color: #eaeaeb;
-    border-radius: 4vw;
-    font-family: "Noto Sans Mono", monospace;
-  }
-  .projectsManagement-container .center-container .top-container {
-    height: 10%;
-    width: 100%;
-    text-align: center;
-    margin: 12px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .projectsManagement-container .center-container .top-container h1 {
-    width: 90%;
-    padding-left: 102px;
+    padding-left: 42px;
+    font-size: 1.5em;
   }
   .projectsManagement-container .center-container .top-container i {
-    width: 10%;
     font-size: 1.5em;
-    text-decoration: none;
-    color: #3e3e3e;
     cursor: pointer;
-  }
-  .projectsManagement-container .center-container .main-container {
-    height: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
   }
   .projectsManagement-container .center-container .main-container .table-projects {
     width: 90%;
   }
   .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr {
     width: 90%;
-    display: flex;
-    justify-content: space-evenly;
+    font-size: 1em;
   }
   .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th {
     width: 18%;
   }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(1) {
-    width: 3%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(6) {
-    width: 5%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(7) {
-    width: 5%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(8) {
-    width: 5%;
-  }
   .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project {
-    height: 32px;
-    width: 90%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background: #3e3e3e;
-    border-radius: 2vw;
-    color: #eaeaeb;
-    margin: 2px 0px;
+    font-size: 1em;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td {
     width: 18%;
-    padding: 0px 8px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(1) {
-    width: 3%;
-    cursor: pointer;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(6) {
-    width: 5%;
-    color: red;
-    cursor: pointer;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) {
-    width: 5%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) a {
-    text-decoration: none;
-    color: #eaeaeb;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) {
-    width: 5%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) a {
-    text-decoration: none;
-    color: #eaeaeb;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks {
     width: 60%;
-    min-height: 25px;
-    margin: 8px 0px 22px 48px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks {
-    width: 100%;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr {
-    display: flex;
-    justify-content: space-between;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th {
-    width: 80%;
-    padding: 0px 8px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th:nth-child(2) {
-    width: 30%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr th:nth-child(3) {
-    width: 8%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody {
-    width: 100%;
+    font-size: 1em;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task {
-    min-height: 32px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #3e3e3e;
-    border-radius: 2vw;
-    color: #eaeaeb;
-    margin: 2px 0px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td {
-    width: 80%;
-    padding: 0px 8px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td:nth-child(2) {
-    width: 30%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks tbody .tr-task td:nth-child(3) {
-    width: 8%;
-    color: red;
+    font-size: 1em;
   }
   .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task {
-    height: 32px;
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #3e3e3e;
-    border-radius: 2vw;
-    color: #eaeaeb;
-    margin: 2px 0px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task td {
-    width: 100%;
-    padding: 0px 8px;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task td:nth-child(1) {
-    width: 3%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task td input {
-    width: 100%;
-    border: none;
-    background: #3e3e3e;
-    color: #17da4b;
-    outline: none;
-    font-weight: bold;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .status-select {
-    -moz-appearance: none;
-         appearance: none;
-    -webkit-appearance: none;
-    background: none;
-    border: none;
-    border-radius: 8px;
-    width: 70%;
-    text-align: center;
-    cursor: pointer;
-    color: white;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .status-select option {
-    -moz-appearance: none;
-         appearance: none;
-    -webkit-appearance: none;
-    border-radius: 12px;
-    border: none;
-    background: none;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .status-select option:hover {
-    background: none;
+    font-size: 1em;
   }
   .add-project-container {
     min-height: 500px;
-    background-color: #3e3e3e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .add-project-container .add-project-center {
     min-height: 410px;
     width: 65%;
-    background-color: #eaeaeb;
-    border-radius: 4vw;
-    font-family: "Noto Sans Mono", monospace;
-  }
-  .add-project-container .add-project-center .top-container {
-    width: 100%;
-    text-align: center;
-    margin: 12px 0;
   }
   .add-project-container .add-project-center .main-container {
     height: 90%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
   }
   .add-project-container .add-project-center .main-container form {
     width: 80%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
   }
   .add-project-container .add-project-center .main-container form .input-container {
     width: 35%;
-    position: relative;
-    margin: 24px 0;
-    font-family: "Noto Sans Mono", monospace;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    font: inherit;
-    color: #3e3e3e;
-    font-weight: bold;
-    background-color: transparent;
-    outline: 2px solid #fff;
-  }
-  .add-project-container .add-project-center .main-container form .input-container label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(10px, 10px);
-    transition: transform 0.25s;
-    font-weight: bold;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input:focus + label,
-  .add-project-container .add-project-center .main-container form .input-container input:valid + label {
-    transform: translate(10px, -14px) scale(0.8);
-    color: #3e3e3e;
-    padding-inline: 5px;
-    background: #eaeaeb;
-    font-weight: bold;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input[type=number]::-webkit-inner-spin-button, .add-project-container .add-project-center .main-container form .input-container input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input[type=number][type=number] {
-    -moz-appearance: textfield; /* Firefox */
-  }
-  .add-project-container .add-project-center .main-container form .input-container input[type=date] {
-    -moz-appearance: none;
-         appearance: none;
-    -webkit-appearance: none;
-    background-color: transparent;
-    border: none;
-    padding: 8px;
-    font-size: 16px;
-    color: #3e3e3e;
-    font-weight: bold;
-    outline: none;
-    outline: 2px solid #fff;
-    padding: 10px;
-    border-radius: 4px;
-    text-align: center;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input[type=date]::-webkit-calendar-picker-indicator {
-    opacity: 0.5;
-    cursor: pointer;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input[type=file]::file-selector-button {
-    border-radius: 4px;
-    padding: 0 16px;
-    cursor: pointer;
-    border: 1px solid #3e3e3e;
-    margin-right: 16px;
-    transition: background-color 200ms;
-  }
-  .add-project-container .add-project-center .main-container form .input-container input[type=file]::file-selector-button:hover {
-    background-color: #f3f4f6;
-  }
-  .add-project-container .add-project-center .main-container form .button-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 0px;
-  }
-  .add-project-container .add-project-center .main-container form .button-container button {
-    outline: 2px solid #fff;
-    border-radius: 4px;
-    font-weight: bold;
-    border: none;
-    width: 15%;
-    height: 36px;
   }
 }
 @media (min-width: 1300px) {
@@ -1558,23 +1719,17 @@ body {
   .projectsManagement-container .center-container .top-container i {
     font-size: 1.75em;
   }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(6) {
-    width: 2%;
+  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr {
+    font-size: 1.1em;
   }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(7) {
-    width: 2%;
+  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project {
+    font-size: 1.1em;
   }
-  .projectsManagement-container .center-container .main-container .table-projects .thead-projects tr th:nth-child(8) {
-    width: 2%;
+  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .head-tasks tr {
+    font-size: 1.1em;
   }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(6) {
-    width: 2%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(7) {
-    width: 2%;
-  }
-  .projectsManagement-container .center-container .main-container .table-projects tbody .tr-project td:nth-child(8) {
-    width: 2%;
+  .projectsManagement-container .center-container .main-container .table-projects tbody .table-tasks .add-task {
+    font-size: 1.1em;
   }
   .client-projects {
     background-color: #3e3e3e;

@@ -1,23 +1,31 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Outlet, Link, useParams } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+ 
 
 function Layout() {
+  const [isOpen, setIsOpen] = useState(false);
+
   useEffect(() => {
     AOS.init();
     AOS.refresh();
   }, []);
 
   const navRef = useRef();
+
   const showNavBar = () => {
+    setIsOpen(!isOpen)
     navRef.current.classList.toggle('responsiv_nav');
   };
+
+
   const enterShowNavBar = (e) => {
     if (e.key == 'Enter') {
       showNavBar();
     }
   };
+
   return (
     <div className=''>
       <div id='skip'>
@@ -28,15 +36,15 @@ function Layout() {
           <div className='header-top'>
             <div className='logo'>
               <Link to='/'>
-                <h4>Chani</h4>
+                <h4>chani</h4>
                 <h4>Architecture</h4>
               </Link>
             </div>
             <div className='burger' onClick={showNavBar} onKeyDown={enterShowNavBar}>
-              <i tabIndex='0' className='fa-solid fa-bars'></i>
+             {!isOpen ? <i tabIndex='0' className='fa-solid fa-bars'></i> : <i className="fa-solid fa-xmark"></i>}
             </div>
-            <nav ref={navRef}>
-              <ul>
+            <nav ref={navRef} onClick={showNavBar}>
+              <ul>    
                 <li>
                   <Link to='/'>Home</Link>
                 </li>

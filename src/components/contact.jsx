@@ -13,7 +13,13 @@ function Contact() {
   } = useForm();
 
   const onSubmit = async (bodyData) => {
-    console.log(bodyData);
+    try {
+      const response = await axios.post('/contact', bodyData);
+      setIsSendEmail(true);
+      console.log(response);
+    } catch (err) {
+      console.log('server error', err.response.data);
+    }
   };
 
   return (

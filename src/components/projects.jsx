@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
+import Loading from './loading';
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -22,7 +23,7 @@ function Projects() {
   }, []);
 
   return isLoading ? (
-    <img src='https://plaidphotography.com/images/edmontonskylineloading.gif' width='100%' height='100%' />
+   <Loading/>
   ) : (
     <div id='content' className='projects-container'>
       <div tabIndex='0' className='text-container'>

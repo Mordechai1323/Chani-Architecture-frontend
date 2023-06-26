@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivet';
 import { Link } from 'react-router-dom';
-import ClientProject from './clientProject';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../loading';
 
 export default function ClientProjects() {
   const axiosPrivate = useAxiosPrivate();
@@ -24,32 +24,28 @@ export default function ClientProjects() {
     } catch (err) {
       setIsLoading(false);
       console.log('server error', err.response);
-      !err.response
-      ? notify('error', 'No Server Response')
-      : err.response.status === 400
-      ? notify('error', 'Project not found')
-      : notify('error', 'Something bad happened');
+      !err.response ? notify('error', 'No Server Response') : err.response.status === 400 ? notify('error', 'Project not found') : notify('error', 'Something bad happened');
     }
   };
 
   useEffect(() => {
     getMyProject();
-  }, []);
+  },[]);
 
   const notify = (status, message) =>
-  toast[status](message, {
-    position: 'top-right',
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: 'colored',
-  });
+    toast[status](message, {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
 
   return isLoading ? (
-    <img src='https://plaidphotography.com/images/edmontonskylineloading.gif' width='100%' height='100%' />
+    <Loading />
   ) : (
     <div className='client-projects'>
       <div className='client-projects-center'>

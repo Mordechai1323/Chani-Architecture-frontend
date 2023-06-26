@@ -11,18 +11,18 @@ import Order from './components/order';
 import Page404 from './components/page404';
 import Project from './components/project';
 import Product from './components/product';
+import ForgetPassword from './components/login/forgetPassword';
+import Unauthorized from './components/unauthorized';
 
 import Account from './components/user/account';
-import ProjectsManagement from './components/admin/projectsManagement';
+import ClientProject from './components/user/clientProject';
 
 import RequireAuth from './components/admin/requireAuth';
+
 import PersistLogin from './components/admin/persistLogin.';
-import ClientProject from './components/user/clientProject';
 import AddProject from './components/admin/addProject';
-import ProjectInfo from './components/admin/projectInfo';
+import ProjectInfo from './components/admin/projectInfo/projectInfo';
 import EditProject from './components/admin/editProject';
-import Unauthorized from './components/unauthorized';
-import ForgetPassword from './components/login/forgetPassword';
 
 function App() {
   return (
@@ -30,12 +30,12 @@ function App() {
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
         <Route path='projects' element={<Projects />} />
+        <Route path='project/:projectID' element={<Project />} />
+        <Route path='order' element={<Order />} />
+        <Route path='product/:productID' element={<Product />} />
+        <Route path='contact' element={<Contact />} />
         <Route path='logIn' element={<LoginPage />} />
         <Route path='forgetPassword' element={<ForgetPassword />} />
-        <Route path='order' element={<Order />} />
-        <Route path='contact' element={<Contact />} />
-        <Route path='project/:projectID' element={<Project />} />
-        <Route path='product/:productID' element={<Product />} />
         <Route path='unauthorized' element={<Unauthorized />} />
         <Route path='*' element={<Page404 />} />
 
@@ -45,8 +45,6 @@ function App() {
             <Route path='project-details/:projectID' element={<ClientProject />} />
           </Route>
           <Route element={<RequireAuth allowedRoles={'admin'} />}>
-            {/* TO DO check in ProjectsManagement secure */}
-            <Route path='projectsManagement' element={<ProjectsManagement />} />
             <Route path='projectsManagement/add' element={<AddProject />} />
             <Route path='projectsManagement/info/:projectID' element={<ProjectInfo />} />
             <Route path='projectsManagement/edit/:projectID' element={<EditProject />} />

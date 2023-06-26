@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivet';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import {useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BASE_URL } from '../../api/axios';
+import Loading from '../loading';
 
-export default function ClientProject({ project }) {
+export default function ClientProject() {
   const axiosPrivate = useAxiosPrivate();
   const { projectID } = useParams();
 
@@ -45,7 +46,7 @@ export default function ClientProject({ project }) {
 
   useEffect(() => {
     getProject();
-  }, []);
+  },[]);
 
   const notify = (status, message) =>
     toast[status](message, {
@@ -60,7 +61,7 @@ export default function ClientProject({ project }) {
     });
 
   return isLoading ? (
-    <img src='https://plaidphotography.com/images/edmontonskylineloading.gif' width='100%' height='100%' />
+   <Loading/>
   ) : (
     <div className='account-container'>
       <div className='account-center'>
@@ -89,7 +90,7 @@ export default function ClientProject({ project }) {
               </div>
               {myProject.file ? (
                 <div className='files-container'>
-                  <a href={BASE_URL + '/' + myProject.file} target='_blank'>
+                  <a href={BASE_URL + '/' + myProject.file} target='_blank' rel="noopener noreferrer">
                     {myProject.file.substring(20)}
                   </a>
                 </div>

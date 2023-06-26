@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivet';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import Loading from '../loading';
+import InputProject from './inputProject';
+import ButtonProject from './buttonProject';
 
 export default function EditProject() {
   const axiosPrivate = useAxiosPrivate();
@@ -14,15 +18,43 @@ export default function EditProject() {
   const [selectedFile, setSelectedFile] = useState();
   const [project, setProject] = useState();
   const [isLoading, setIsLoading] = useState(true);
-  const [date, setDate] = useState('');
+
+  const [formData, setFormData] = useState({
+    project_number: '',
+    project_name: '',
+    client_email: '',
+    completion_date: '',
+    notes: '',
+  });
+  const [err, setErr] = useState({
+    project_number: '',
+    project_name: '',
+    client_email: '',
+    completion_date: '',
+    notes: '',
+  });
 
   const controller = new AbortController();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const blurHandler = (e) => {
+    const { name, value } = e.target;
+    let errMsg = inputErrorHandler(name, value);
+    setErr({ ...err, [name]: errMsg });
+    setFormData({ ...formData, [name]: value });
+  };
+
+  function inputErrorHandler(name, value) {
+    let errMsg = '';
+    if (name === 'project_number') {
+      errMsg = value.length > 0 || value.length === 0 ? '' : 'Enter valid number(min 1 digit)';
+    } else if (name === 'project_name') {
+      errMsg = value.length >= 2 || value.length === 0 ? '' : 'Enter valid name(min 2 letters)';
+    } else if (name === 'client_email') {
+      let regex = /^\w+@[A-z]+\.[A-z]{2,4}/;
+      errMsg = value.trim().match(regex) || value.length === 0 ? '' : 'Enter valid email';
+    }
+    return errMsg;
+  }
 
   const getProject = async () => {
     try {
@@ -30,7 +62,8 @@ export default function EditProject() {
         signal: controller.signal,
       });
       setProject(response.data);
-      setDate(response.data.completion_date?.substring(0, 10));
+      // setDate(response.data.completion_date?.substring(0, 10));
+      setFormData({ ...formData, completion_date: response.data.completion_date?.substring(0, 10), notes: response.data.notes });
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
@@ -51,44 +84,48 @@ export default function EditProject() {
         signal: controller.signal,
       });
       if (response.data.modifiedCount === 1) {
-        nav('/projectsManagement');
+        nav('/account');
       }
     } catch (error) {
       console.error(error.response);
     }
   };
 
-  const onSubmit = async (bodyData) => {
-    let updatedData = {};
-    for (const key in bodyData) {
-      if (key === 'completion_date' && date !== project?.completion_date?.substring(0, 10)) {
-        updatedData[key] = date;
-      } else if (bodyData[key] !== '' && key !== 'completion_date') {
-        updatedData[key] = bodyData[key];
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    let updatedData = {}
+
+    for (const key in formData) {
+      if (formData[key] !== '' || key === 'notes') {
+        updatedData[key] = formData[key];
       } else {
         updatedData[key] = project[key];
       }
     }
-    try {
-      const response = await axiosPrivate.put(`/projects/?projectID=${projectID}`, updatedData, {
-        signal: controller.signal,
-      });
-      const urlFile = project.file ? `editFile/${project._id}` : `uploadFile/${project._id}`;
-      selectedFile && sendFileToServer(urlFile);
-      if (response.data.modifiedCount === 1) {
-        nav('/projectsManagement');
-      } else {
-        notify('error', `You didn't change anything`);
+    const isErr = err.project_number !== '' || err.project_name !== '' || err.client_email !== '' ? true : false;
+    if (!isErr) {
+      try {
+        const response = await axiosPrivate.put(`/projects/?projectID=${projectID}`, updatedData, {
+          signal: controller.signal,
+        });
+        const urlFile = project.file ? `editFile/${project._id}` : `uploadFile/${project._id}`;
+        selectedFile && sendFileToServer(urlFile);
+        if (response.data.modifiedCount === 1) {
+          nav('/account');
+        } else {
+          notify('error', `You didn't change anything`);
+        }
+      } catch (err) {
+        console.log('server error', err.response);
+        !err.response
+          ? notify('error', 'No Server Response')
+          : err.response.status === 400
+          ? notify('error', 'Missing info')
+          : err.response?.status === 401
+          ? notify('error', 'Client not found')
+          : notify('error', 'Edit project failed');
       }
-    } catch (err) {
-      console.log('server error', err.response);
-      !err.response
-        ? notify('error', 'No Server Response')
-        : err.response.status === 400
-        ? notify('error', 'Missing info')
-        : err.response?.status === 401
-        ? notify('error', 'Client not found')
-        : notify('error', 'Edit project failed');
     }
   };
 
@@ -105,7 +142,7 @@ export default function EditProject() {
     });
 
   return isLoading ? (
-    <img src='https://plaidphotography.com/images/edmontonskylineloading.gif' width='100%' height='100%' />
+    <Loading />
   ) : (
     <div className='add-project-container'>
       <div className='add-project-center'>
@@ -113,68 +150,28 @@ export default function EditProject() {
           <h1>Edit project</h1>
         </div>
         <div className='main-container'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='input-container'>
-              <input {...register('project_number', { required: false })} id='project_number' type='number' placeholder={project.project_number} />
-              <label htmlFor='project_number'>Project number</label>
-              {errors.project_number && (
-                <div tabIndex='0' className='text-danger font-weight-bold d-block'>
-                  Enter valid number(min 1 digit)
-                </div>
-              )}
-            </div>
-            <div className='input-container'>
-              <input {...register('project_name', { required: false, minLength: 2 })} id='project_name' type='text' placeholder={project.project_name} />
-              <label htmlFor='project_name' required className='input-label'>
-                Project name
-              </label>
-              {errors.project_name && (
-                <div tabIndex='0' className='text-danger font-weight-bold d-block'>
-                  Enter valid name(min 2 chars)
-                </div>
-              )}
-            </div>
-            <div className='input-container'>
-              <input
-                {...register('client_email', { required: false, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })}
-                id='client_email'
-                type='email'
-                placeholder={project.client_email}
-              />
-              <label htmlFor='client_email' required className='input-label'>
-                Client email
-              </label>
-              {errors.client_email && (
-                <div tabIndex='0' className='text-danger font-weight-bold d-block'>
-                  Enter valid email
-                </div>
-              )}
-            </div>
-            <div className='input-container'>
-              <input {...register('completion_date')} id='completion_date' type='date' value={date || ''} onChange={(e) => setDate(e.target.value)} />
-              <label htmlFor='completion_date' className='input-label'>
-                completion date
-              </label>
-            </div>
-            <div className='input-container'>
-              <input
-                type='file'
-                id='project_file'
-                onChange={(e) => {
-                  setSelectedFile(e.target.files[0]);
-                }}
-              />
-              <label htmlFor='project_file'>{project.file ? 'Update file' : 'Upload file'}</label>
-            </div>
-            <div className='input-container'>
-              <input {...register('notes', { required: false })} id='notes' type='text' value={project.notes} onChange={(e) => setProject({ ...project, notes: e.target.value })} />
-              <label htmlFor='notes' required className='input-label'>
-                Notes
-              </label>
-            </div>
-            <div className='button-container'>
-              <button>Update</button>
-            </div>
+          <form onSubmit={onSubmit}>
+            <InputProject
+              name={'project_number'}
+              label={'Project number'}
+              type={'number'}
+              placeholder={project.project_number}
+              onChange={blurHandler}
+              errMessage={err.project_number}
+            />
+            <InputProject name={'project_name'} label={'Project name'} type={'text'} placeholder={project.project_name} onChange={blurHandler} errMessage={err.project_name} />
+            <InputProject name={'client_email'} label={'Client email'} type={'email'} placeholder={project.client_email} onChange={blurHandler} errMessage={err.client_email} />
+            <InputProject name={'completion_date'} label={'completion date'} type={'date'} value={formData.completion_date || ''} onChange={blurHandler} />
+            <InputProject
+              name={'project_file'}
+              type={'file'}
+              label={project.file ? 'Update file' : 'Upload file'}
+              onChange={(e) => {
+                setSelectedFile(e.target.files[0]);
+              }}
+            />
+            <InputProject name={'notes'} label={'Notes'} type={'text'} value={formData.notes} onChange={blurHandler} />
+            <ButtonProject type={'submit'} text={'Update'} />
           </form>
         </div>
       </div>

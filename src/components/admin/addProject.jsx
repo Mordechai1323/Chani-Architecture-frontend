@@ -1,23 +1,54 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useAxiosPrivate from '../../hooks/useAxiosPrivet';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
+import InputProject from './inputProject';
+import ButtonProject from './buttonProject';
 
 export default function AddProject() {
   const axiosPrivate = useAxiosPrivate();
   const nav = useNavigate();
 
   const [selectedFile, setSelectedFile] = useState();
+  const [formData, setFormData] = useState({
+    project_number: '',
+    project_name: '',
+    client_email: '',
+    completion_date: '',
+    notes: '',
+  });
+  const [err, setErr] = useState({
+    project_number: '',
+    project_name: '',
+    client_email: '',
+    completion_date: '',
+    notes: '',
+  });
+
   const controller = new AbortController();
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const blurHandler = (e) => {
+    const { name, value } = e.target;
+    let errMsg = inputErrorHandler(name, value);
+    setErr({ ...err, [name]: errMsg });
+    setFormData({ ...formData, [name]: value });
+  };
+
+  function inputErrorHandler(name, value) {
+    let errMsg = '';
+    if (name === 'project_number') {
+      errMsg = value.length > 0 ? '' : 'Enter valid number(min 1 digit)';
+    } else if (name === 'project_name') {
+      errMsg = value.length >= 2 ? '' : 'Enter valid name(min 2 letters)';
+    } else if (name === 'client_email') {
+      let regex = /^\w+@[A-z]+\.[A-z]{2,4}/;
+      errMsg = value.trim().match(regex) || value.length === 0 ? '' : 'Enter valid email';
+    }
+    return errMsg;
+  }
 
   const sendFileToServer = async (projectID) => {
     const formData = new FormData();
@@ -31,24 +62,30 @@ export default function AddProject() {
     }
   };
 
-  const onSubmit = async (bodyData) => {
-    try {
-      const response = await axiosPrivate.post(`/projects/`, bodyData, {
-        signal: controller.signal,
-      });
-      if (response.status === 201) {
-        selectedFile && sendFileToServer(response.data._id);
-        nav('/projectsManagement');
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const isErr = err.project_number !== '' || err.project_name !== '' || err.client_email !== '' ? true : false;
+
+    if (!isErr) {
+      try {
+        const response = await axiosPrivate.post(`/projects/`, formData, {
+          signal: controller.signal,
+        });
+        if (response.status === 201) {
+          selectedFile && sendFileToServer(response.data._id);
+          nav('/account');
+        }
+      } catch (err) {
+        console.log('server error', err.response);
+        !err.response
+          ? notify('error', 'No Server Response')
+          : err.response.status === 400
+          ? notify('error', 'Missing info')
+          : err.response?.status === 401
+          ? notify('error', 'Client not found')
+          : notify('error', 'Add project failed');
       }
-    } catch (err) {
-      console.log('server error', err.response);
-      !err.response
-        ? notify('error', 'No Server Response')
-        : err.response.status === 400
-        ? notify('error', 'Missing info')
-        : err.response?.status === 401
-        ? notify('error', 'Client not found')
-        : notify('error', 'Add project failed');
     }
   };
 
@@ -71,63 +108,21 @@ export default function AddProject() {
           <h1>Add project</h1>
         </div>
         <div className='main-container'>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='input-container'>
-              <input {...register('project_number', { required: true })} id='project_number' type='number' />
-              <label htmlFor='project_number'>Project number</label>
-              {errors.project_number && (
-                <div tabIndex='0' className='text-danger font-weight-bold d-block'>
-                  Enter valid number(min 1 digit)
-                </div>
-              )}
-            </div>
-            <div className='input-container'>
-              <input {...register('project_name', { required: true, minLength: 2 })} id='project_name' type='text' />
-              <label htmlFor='project_name' required className='input-label'>
-                Project name
-              </label>
-              {errors.project_name && (
-                <div tabIndex='0' className='text-danger font-weight-bold d-block'>
-                  Enter valid name(min 2 chars)
-                </div>
-              )}
-            </div>
-            <div className='input-container'>
-              <input {...register('client_email', { required: false, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })} id='client_email' type='email' />
-              <label htmlFor='client_email' required className='input-label'>
-                Client email
-              </label>
-              {errors.client_email && (
-                <div tabIndex='0' className='text-danger font-weight-bold d-block'>
-                  Enter valid email
-                </div>
-              )}
-            </div>
-            <div className='input-container'>
-              <input {...register('completion_date')} id='completion_date' type='date' />
-              <label htmlFor='completion_date' className='input-label'>
-                completion date
-              </label>
-            </div>
-            <div className='input-container'>
-              <input
-                type='file'
-                id='project_file'
-                onChange={(e) => {
-                  setSelectedFile(e.target.files[0]);
-                }}
-              />
-              <label htmlFor='project_file'>Upload file</label>
-            </div>
-            <div className='input-container'>
-              <input {...register('notes', { required: false })} id='notes' type='text' />
-              <label htmlFor='notes' required className='input-label'>
-                Notes
-              </label>
-            </div>
-            <div className='button-container'>
-              <button>send</button>
-            </div>
+          <form onSubmit={onSubmit}>
+            <InputProject name={'project_number'} label={'Project number'} required={true} type={'number'} onChange={blurHandler} errMessage={err.project_number} />
+            <InputProject name={'project_name'} label={'Project name'} required={true} type={'text'} onChange={blurHandler} errMessage={err.project_name} />
+            <InputProject name={'client_email'} label={'Client email'} type={'email'} onChange={blurHandler} errMessage={err.client_email} />
+            <InputProject name={'completion_date'} label={'completion date'} type={'date'} value={formData.completion_date || ''} onChange={blurHandler} />
+            <InputProject
+              name={'project_file'}
+              type={'file'}
+              label={'Upload file'}
+              onChange={(e) => {
+                setSelectedFile(e.target.files[0]);
+              }}
+            />
+            <InputProject name={'notes'} label={'Notes'} type={'text'} value={formData.notes} onChange={blurHandler} />
+            <ButtonProject type={'submit'} text={'Update'} />
           </form>
         </div>
       </div>

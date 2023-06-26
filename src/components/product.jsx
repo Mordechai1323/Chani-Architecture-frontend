@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from '../api/axios';
+import Loading from './loading';
 
 function Product() {
   const { productID } = useParams();
@@ -24,7 +25,7 @@ function Product() {
   }, []);
 
   return isLoading ? (
-    <img src='https://plaidphotography.com/images/edmontonskylineloading.gif' width='100%' height='100%' />
+   <Loading/>
   ) : (
     <div className='pagOrder-container'>
       <div id='content' className='pagOrder-center-container'>

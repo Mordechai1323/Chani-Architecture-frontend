@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from '../api/axios';
+import Loading from './loading';
 
 function Order() {
   const [products, setProducts] = useState([]);
@@ -22,7 +23,7 @@ function Order() {
   }, []);
 
   return isLoading ? (
-    <img src='https://plaidphotography.com/images/edmontonskylineloading.gif' width='100%' height='100%' />
+    <Loading/>
   ) : (
     <div className='order-container'>
       <div id='content' className='order-center-container'>

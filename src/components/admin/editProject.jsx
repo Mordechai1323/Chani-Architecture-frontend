@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../loading';
 import InputProject from './inputProject';
 import ButtonProject from './buttonProject';
+import  {AddProjectStyle} from'./addProject'
 
 export default function EditProject() {
   const axiosPrivate = useAxiosPrivate();
@@ -144,7 +145,7 @@ export default function EditProject() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className='add-project-container'>
+    <AddProjectStyle>
       <div className='add-project-center'>
         <div className='top-container'>
           <h1>Edit project</h1>
@@ -176,6 +177,6 @@ export default function EditProject() {
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </AddProjectStyle>
   );
 }

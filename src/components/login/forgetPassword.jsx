@@ -3,13 +3,13 @@ import { useNavigate, useLocation, Link } from 'react-router-dom';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 import axios from '../../api/axios';
-import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { styled } from 'styled-components';
 
-function ForgetPassword({ setIsRegistered }) {
+export default function ForgetPassword({ setIsRegistered }) {
   const reRef = useRef();
   const nav = useNavigate();
 
@@ -123,7 +123,7 @@ function ForgetPassword({ setIsRegistered }) {
     });
 
   return !isVerify ? (
-    <form onSubmit={handleSubmit(handleSendCode)} className='forget-password-container'>
+    <ForgetPasswordStyle onSubmit={handleSubmit(handleSendCode)}>
       {!isCodeSent && (
         <div className='forget-password-center'>
           <div className='header-container'>
@@ -181,9 +181,9 @@ function ForgetPassword({ setIsRegistered }) {
           <ToastContainer />
         </div>
       )}
-    </form>
+    </ForgetPasswordStyle>
   ) : (
-    <form onSubmit={handleSubmit(changePassword)} className='forget-password-container'>
+    <ForgetPasswordStyle onSubmit={handleSubmit(changePassword)}>
       <div className='forget-password-center'>
         <div className='header-container'>
           <h2>Enter new password</h2>
@@ -226,8 +226,124 @@ function ForgetPassword({ setIsRegistered }) {
         </div>
         <ToastContainer />
       </div>
-    </form>
+    </ForgetPasswordStyle>
   );
 }
 
-export default ForgetPassword;
+const ForgetPasswordStyle = styled.form`
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3e3e3e;
+
+  & .forget-password-center {
+    width: 70%;
+    max-width: 300px;
+    min-height: 400px;
+    background-color: #eaeaeb;
+    border-radius: 38px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+
+    & .header-container {
+      height: 25%;
+      width: 80%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & h2 {
+        font-size: 1.25em;
+        font-weight: bold;
+      }
+    }
+
+    & .email-container {
+      width: 70%;
+      & .top-container {
+        & label {
+          font-size: 1em;
+          margin: 0;
+          font-weight: bold;
+        }
+      }
+
+      & .down-container {
+        display: flex;
+        align-items: center;
+
+        & input {
+          width: 100%;
+          border: none;
+          outline: none;
+          margin-left: 8px;
+          background: #eaeaeb;
+          border-radius: 12px;
+          font-weight: bold;
+        }
+
+        & input::-webkit-outer-spin-button,
+        & input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+
+    & .password-container {
+      width: 60%;
+
+      & .top-container {
+        & label {
+          font-size: 1.25em;
+          margin: 0;
+          font-weight: bold;
+        }
+      }
+
+      & .down-container {
+        display: flex;
+        align-items: center;
+
+        & input {
+          width: 100%;
+          border: none;
+          outline: none;
+          margin-left: 8px;
+          background: #eaeaeb;
+          border-radius: 12px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    & .forget-password-button {
+      margin-top: 16px;
+      width: 60%;
+
+      & button {
+        width: 100%;
+        height: 36px;
+        background-color: #3e3e3e;
+        color: white;
+        border-radius: 32px;
+        border: none;
+      }
+    }
+  }
+
+  @media (min-width: 1300px) {
+    min-height: 850px;
+
+    & .forget-password-center {
+      max-width: 380px;
+      min-height: 500px;
+    }
+  }
+`;

@@ -1,15 +1,14 @@
-import './style/style.css';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Layout from './components/layout';
-import Home from './components/home';
-import Projects from './components/projects';
+import Home from './components/home/Home';
+import OurProjects from './components/OurProjects/OurProjects';
 import LoginPage from './components/login/loginPage';
-import Contact from './components/contact';
-import Order from './components/order';
+import Contact from './components/contact/Contact';
+import Order from './components/order/Order';
 import Page404 from './components/page404';
-import Project from './components/project';
+import ProjectPage from './components/OurProjects/ProjectPage';
 import Product from './components/product';
 import ForgetPassword from './components/login/forgetPassword';
 import Unauthorized from './components/unauthorized';
@@ -24,13 +23,15 @@ import AddProject from './components/admin/addProject';
 import ProjectInfo from './components/admin/projectInfo/projectInfo';
 import EditProject from './components/admin/editProject';
 
+import './App.css';
+
 function App() {
   return (
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path='projects' element={<Projects />} />
-        <Route path='project/:projectID' element={<Project />} />
+        <Route path='projects' element={<OurProjects />} />
+        <Route path='project/:projectID' element={<ProjectPage />} />
         <Route path='order' element={<Order />} />
         <Route path='product/:productID' element={<Product />} />
         <Route path='contact' element={<Contact />} />

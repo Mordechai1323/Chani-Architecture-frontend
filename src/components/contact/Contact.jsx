@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import axios from '../api/axios';
+import axios from '../../api/axios';
 import { useForm } from 'react-hook-form';
+import Top from './Top';
+import { styled } from 'styled-components';
+import { Content } from '../UI/Content.style';
 
 function Contact() {
   const [isSendEmail, setIsSendEmail] = useState(false);
@@ -23,25 +26,11 @@ function Contact() {
   };
 
   return (
-    <div className='contact-container'>
+    <Content>
       <h1 className='sr-only'>page for contact</h1>
-      <div className='contact-center'>
-        <div className='top-contact-center'>
-          <div className='left-container'>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-          <div className='right-container'>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
-          </div>
-        </div>
+      <ContactStyle>
+        <Top />
+
         {!isSendEmail ? (
           <div id='content' className='down-contact-center'>
             <div className='left-container'>
@@ -102,9 +91,165 @@ function Contact() {
             </div>
           </div>
         )}
-      </div>
-    </div>
+      </ContactStyle>
+    </Content>
   );
 }
 
 export default Contact;
+
+const ContactStyle = styled.div`
+  width: 90%;
+  height: 380px;
+  background: #eaeaeb;
+  border-radius: 4vw;
+
+  & .down-contact-center {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    color: #3e3e3e;
+
+    & .left-container {
+      width: 100%;
+      min-height: 78px;
+      margin-top: 5vw;
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 32px;
+
+      & .top-left-container {
+        display: flex;
+        font-size: 1em;
+        width: 100%;
+
+        & h2 {
+          margin: 0;
+          font-size: 1.5em;
+          margin-right: 8px;
+          font-weight: 500;
+        }
+      }
+
+      & .down-left-container {
+        width: 100%;
+        margin-top: 2vw;
+
+        & h3 {
+          font-size: 0.7em;
+          font-weight: bold;
+
+          & a {
+            text-decoration: none;
+            color: #3e3e3e;
+          }
+        }
+      }
+    }
+
+    & .right-container {
+      width: 100%;
+      min-height: 258px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+      & form {
+        width: 80%;
+
+        & input {
+          width: 100%;
+          border: none;
+          background: none;
+          outline: none;
+          border-bottom: 1px solid #666;
+          margin-top: 5vw;
+          font-size: 0.7em;
+          font-weight: bold;
+        }
+      }
+
+      & button {
+        border: none;
+        background: none;
+        font-weight: bold;
+        margin: 5vw 0vw 0vw 0vw;
+        font-size: 5vw;
+      }
+    }
+  }
+
+  @media (min-width: 550px) {
+    min-height: 396px;
+    width: 53%;
+    border-radius: 32px;
+
+
+
+    & .down-contact-center {
+      & .left-container {
+        width: 50%;
+        margin: 0;
+
+        & .top-left-container {
+          min-height: 216px;
+          font-size: 2.6vw;
+          flex-direction: column;
+          margin: 18px 0 0 55px;
+
+          & h4 {
+            margin: 0;
+          }
+
+          & .line {
+            border-bottom: solid;
+            border-radius: 10vw;
+            width: 3vw;
+          }
+        }
+
+        & .down-left-container {
+          font-size: 1em;
+          margin: 98px 0 0 55px;
+
+          & a {
+            text-decoration: none;
+            color: #3e3e3e;
+          }
+        }
+      }
+
+      & .right-container {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & form {
+          & input {
+            margin: 24px 0;
+          }
+        }
+
+        & button {
+          margin: 4px 0 0 83%;
+          font-size: 1em;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1300px) {
+    min-height: 496px;
+    width: 45%;
+    border-radius: 32px;
+
+    & .down-contact-center {
+      min-height: 458px;
+    }
+  }
+`;

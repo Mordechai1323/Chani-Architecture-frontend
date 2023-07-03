@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../../loading';
 import Info from './info';
 import File from './file';
+import { ProjectStyle } from '../../user/clientProject';
 
 export default function ProjectInfo() {
   const axiosPrivate = useAxiosPrivate();
@@ -50,7 +51,7 @@ export default function ProjectInfo() {
   return isLoading ? (
     <Loading />
   ) : (
-    <div className='account-container'>
+    <ProjectStyle>
       <div className='account-center'>
         <div className='top-container'>
           <h1>project</h1>
@@ -73,6 +74,6 @@ export default function ProjectInfo() {
         </div>
       </div>
       <ToastContainer />
-    </div>
+    </ProjectStyle>
   );
 }

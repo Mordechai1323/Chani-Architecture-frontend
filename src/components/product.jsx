@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from '../api/axios';
 import Loading from './loading';
+import { styled } from 'styled-components';
 
-function Product() {
+export default function Product() {
   const { productID } = useParams();
 
   const [product, setProduct] = useState({});
@@ -25,9 +26,9 @@ function Product() {
   }, []);
 
   return isLoading ? (
-   <Loading/>
+    <Loading />
   ) : (
-    <div className='pagOrder-container'>
+    <ProductStyle>
       <div id='content' className='pagOrder-center-container'>
         <div className='pagOrder'>
           <div className='img-container'>
@@ -41,8 +42,120 @@ function Product() {
           </div>
         </div>
       </div>
-    </div>
+    </ProductStyle>
   );
 }
 
-export default Product;
+const ProductStyle = styled.div`
+  width: 100%;
+  min-height: 550px;
+  background: #3e3e3e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & .pagOrder-center-container {
+    width: 80%;
+
+    & .pagOrder {
+      min-height: 450px;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 8px 0;
+
+      & .img-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & img {
+          width: 95%;
+          height: 90%;
+          border-radius: 12px;
+        }
+      }
+
+      & .text-container {
+        width: 100%;
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        color: #eaeaeb;
+
+        & h2 {
+          font-size: 1.25em;
+          width: 100%;
+        }
+
+        & p {
+          font-size: 0.75em;
+          width: 100%;
+        }
+
+        & h4 {
+          font-size: 1em;
+          width: 100%;
+        }
+
+        & button {
+          border: none;
+          background: #eaeaeb;
+          color: #3e3e3e;
+          border-radius: 20px;
+          width: 45%;
+          font-size: 1.75em;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 550px) {
+    & .pagOrder-center-container {
+      & .pagOrder {
+        & .img-container {
+          width: 60%;
+        }
+
+        & .text-container {
+          width: 40%;
+
+          & h2 {
+            font-size: 2.5em;
+          }
+
+          & p {
+            font-size: 1.5em;
+          }
+
+          & h4 {
+            font-size: 2.5em;
+          }
+
+          & button {
+            width: 45%;
+            font-size: 1.75em;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1300px) {
+    min-height: 850px;
+    & .pagOrder-center-container {
+      & .pagOrder {
+        & .img-container {
+          width: 50%;
+        }
+        & .text-container {
+          width: 50%;
+        }
+      }
+    }
+  }
+`;

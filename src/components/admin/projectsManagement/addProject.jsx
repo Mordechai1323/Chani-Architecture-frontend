@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import useAxiosPrivate from '../../hooks/useAxiosPrivet';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivet';
 import { useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import InputProject from './inputProject';
-import ButtonProject from './buttonProject';
+import InputProject from '../../UI/inputProject';
+import ButtonProject from '../../UI/buttonProject';
 import { styled } from 'styled-components';
 
 export default function AddProject() {
@@ -110,10 +110,36 @@ export default function AddProject() {
         </div>
         <div className='main-container'>
           <form onSubmit={onSubmit}>
-            <InputProject name={'project_number'} label={'Project number'} required={true} type={'number'} onChange={blurHandler} errMessage={err.project_number} />
-            <InputProject name={'project_name'} label={'Project name'} required={true} type={'text'} onChange={blurHandler} errMessage={err.project_name} />
-            <InputProject name={'client_email'} label={'Client email'} type={'email'} onChange={blurHandler} errMessage={err.client_email} />
-            <InputProject name={'completion_date'} label={'completion date'} type={'date'} value={formData.completion_date || ''} onChange={blurHandler} />
+            <InputProject
+              name={'project_number'}
+              label={'Project number'}
+              required={true}
+              type={'number'}
+              onChange={blurHandler}
+              errMessage={err.project_number}
+            />
+            <InputProject
+              name={'project_name'}
+              label={'Project name'}
+              required={true}
+              type={'text'}
+              onChange={blurHandler}
+              errMessage={err.project_name}
+            />
+            <InputProject
+              name={'client_email'}
+              label={'Client email'}
+              type={'email'}
+              onChange={blurHandler}
+              errMessage={err.client_email}
+            />
+            <InputProject
+              name={'completion_date'}
+              label={'completion date'}
+              type={'date'}
+              value={formData.completion_date || ''}
+              onChange={blurHandler}
+            />
             <InputProject
               name={'project_file'}
               type={'file'}

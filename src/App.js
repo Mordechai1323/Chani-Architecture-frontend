@@ -9,8 +9,8 @@ import Contact from './components/contact/Contact';
 import Order from './components/order/Order';
 import Page404 from './components/page404';
 import ProjectPage from './components/OurProjects/ProjectPage';
-import Product from './components/product';
-import ForgetPassword from './components/login/forgetPassword';
+import ProductPage from './components/order/productPage';
+import ForgotPassword from './components/login/forgotPassword/ForgotPassword';
 import Unauthorized from './components/unauthorized';
 
 import Account from './components/user/account';
@@ -19,9 +19,9 @@ import ClientProject from './components/user/clientProject';
 import RequireAuth from './components/admin/requireAuth';
 
 import PersistLogin from './components/admin/persistLogin.';
-import AddProject from './components/admin/addProject';
+import AddProject from './components/admin//projectsManagement/addProject';
 import ProjectInfo from './components/admin/projectInfo/projectInfo';
-import EditProject from './components/admin/editProject';
+import EditProject from './components/admin/projectsManagement/editProject';
 
 import './App.css';
 
@@ -33,10 +33,10 @@ function App() {
         <Route path='projects' element={<OurProjects />} />
         <Route path='project/:projectID' element={<ProjectPage />} />
         <Route path='order' element={<Order />} />
-        <Route path='product/:productID' element={<Product />} />
+        <Route path='product/:productID' element={<ProductPage />} />
         <Route path='contact' element={<Contact />} />
         <Route path='logIn' element={<LoginPage />} />
-        <Route path='forgetPassword' element={<ForgetPassword />} />
+        <Route path='forgotPassword' element={<ForgotPassword />} />
         <Route path='unauthorized' element={<Unauthorized />} />
         <Route path='*' element={<Page404 />} />
 

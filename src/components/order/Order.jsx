@@ -27,13 +27,20 @@ function Order() {
   }, []);
 
   return isLoading ? (
-    <Loading/>
+    <Loading />
   ) : (
     <Content>
-      <Center id='content' >
+      <Center id='content'>
         {products.map((product) => {
           return (
-            <Product key={product._id} id={product._id} name={product.name} price={product.price} description={product.description} image={product.image}/>
+            <Product
+              key={product._id}
+              id={product._id}
+              name={product.name}
+              price={product.price}
+              description={product.description}
+              image={product.image}
+            />
           );
         })}
       </Center>
@@ -42,5 +49,3 @@ function Order() {
 }
 
 export default Order;
-
-

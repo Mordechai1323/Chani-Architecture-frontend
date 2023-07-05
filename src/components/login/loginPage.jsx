@@ -5,6 +5,8 @@ import SignUpForm from './signUpForm';
 
 export default function LoginPage() {
   const [isRegistered, setIsRegistered] = useState(true);
+
   
+
   return <>{isRegistered ? <LoginForm setIsRegistered={setIsRegistered} /> : <SignUpForm setIsRegistered={setIsRegistered} />}</>;
 }

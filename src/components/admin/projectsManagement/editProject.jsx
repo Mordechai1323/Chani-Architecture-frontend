@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import useAxiosPrivate from '../../hooks/useAxiosPrivet';
+import useAxiosPrivate from '../../../hooks/useAxiosPrivet';
 import { useNavigate, useParams } from 'react-router-dom';
-
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import Loading from '../loading';
-import InputProject from './inputProject';
-import ButtonProject from './buttonProject';
-import  {AddProjectStyle} from'./addProject'
+import Loading from '../../loading';
+import InputProject from '../../UI/inputProject';
+import ButtonProject from '../../UI/buttonProject';
+import { AddProjectStyle } from './addProject';
 
 export default function EditProject() {
   const axiosPrivate = useAxiosPrivate();
@@ -95,7 +94,7 @@ export default function EditProject() {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    let updatedData = {}
+    let updatedData = {};
 
     for (const key in formData) {
       if (formData[key] !== '' || key === 'notes') {
@@ -160,9 +159,29 @@ export default function EditProject() {
               onChange={blurHandler}
               errMessage={err.project_number}
             />
-            <InputProject name={'project_name'} label={'Project name'} type={'text'} placeholder={project.project_name} onChange={blurHandler} errMessage={err.project_name} />
-            <InputProject name={'client_email'} label={'Client email'} type={'email'} placeholder={project.client_email} onChange={blurHandler} errMessage={err.client_email} />
-            <InputProject name={'completion_date'} label={'completion date'} type={'date'} value={formData.completion_date || ''} onChange={blurHandler} />
+            <InputProject
+              name={'project_name'}
+              label={'Project name'}
+              type={'text'}
+              placeholder={project.project_name}
+              onChange={blurHandler}
+              errMessage={err.project_name}
+            />
+            <InputProject
+              name={'client_email'}
+              label={'Client email'}
+              type={'email'}
+              placeholder={project.client_email}
+              onChange={blurHandler}
+              errMessage={err.client_email}
+            />
+            <InputProject
+              name={'completion_date'}
+              label={'completion date'}
+              type={'date'}
+              value={formData.completion_date || ''}
+              onChange={blurHandler}
+            />
             <InputProject
               name={'project_file'}
               type={'file'}

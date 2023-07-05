@@ -1,5 +1,6 @@
 import React from 'react';
 import useAxiosPrivate from '../../../hooks/useAxiosPrivet';
+import { styled } from 'styled-components';
 
 export default function SelectStatus({ projects, setProjects, project, task, notify }) {
   const axiosPrivate = useAxiosPrivate();
@@ -68,23 +69,47 @@ export default function SelectStatus({ projects, setProjects, project, task, not
   const status = task ? task.status : project.status;
 
   return (
-    <select
-      className='status-select'
-      style={{ background: status?.style }}
-      onChange={(e) => (task ? changeTaskStatus(e, task?._id, project?._id) : changeProjectStatus(e, project?._id))}
-    >
-      <option value={status?.name} style={{ background: status?.style }}>
-        {status?.name}
-      </option>
-      {optionsArr.map((option) =>
-        option.name !== status.name ? (
-          <option value={option.name} style={{ background: option.style }} key={option.name}>
-            {option.name}
-          </option>
-        ) : (
-          ''
-        )
-      )}
-    </select>
+    <td>
+      <SelectStatusStyle
+        $background={status?.style}
+        onChange={(e) => (task ? changeTaskStatus(e, task?._id, project?._id) : changeProjectStatus(e, project?._id))}
+      >
+        <option value={status?.name} style={{ background: status?.style }}>
+          {status?.name}
+        </option>
+        {optionsArr.map((option) =>
+          option.name !== status.name ? (
+            <option value={option.name} style={{ background: option.style }} key={option.name}>
+              {option.name}
+            </option>
+          ) : (
+            ''
+          )
+        )}
+      </SelectStatusStyle>
+    </td>
   );
 }
+
+const SelectStatusStyle = styled.select`
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  width: 70%;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  background: ${(props) => props.$background};
+  & option {
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 12px;
+    border: none;
+    background: none;
+    &:hover {
+      background: none;
+    }
+  }
+`;
